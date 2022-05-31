@@ -1,0 +1,105 @@
+2022/05/31 00:06:12 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:06:21 --: =============Envia Token=============
+2022/05/31 00:06:21 --: Iniciando tela do tokem...
+2022/05/31 00:06:21 --: Emitindo token
+2022/05/31 00:06:21 --: Gerando código token
+2022/05/31 00:06:21 --: Token enviado
+2022/05/31 00:06:32 --: ===============Tela Principal===============
+2022/05/31 00:06:32 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:22:50 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:23:26 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:23:34 --: =============Envia Token=============
+2022/05/31 00:23:34 --: Iniciando tela do tokem...
+2022/05/31 00:23:34 --: Emitindo token
+2022/05/31 00:23:34 --: Gerando código token
+2022/05/31 00:23:34 --: Token enviado
+2022/05/31 00:23:45 --: ===============Tela Principal===============
+2022/05/31 00:23:45 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:25:58 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:26:07 --: =============Envia Token=============
+2022/05/31 00:26:07 --: Iniciando tela do tokem...
+2022/05/31 00:26:07 --: Emitindo token
+2022/05/31 00:26:07 --: Gerando código token
+2022/05/31 00:26:07 --: Token enviado
+2022/05/31 00:26:19 --: ===============Tela Principal===============
+2022/05/31 00:26:19 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:29:34 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:29:42 --: =============Envia Token=============
+2022/05/31 00:29:42 --: Iniciando tela do tokem...
+2022/05/31 00:29:42 --: Emitindo token
+2022/05/31 00:29:42 --: Gerando código token
+2022/05/31 00:29:42 --: Token enviado
+2022/05/31 00:29:51 --: ===============Tela Principal===============
+2022/05/31 00:29:51 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:36:42 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:36:51 --: =============Envia Token=============
+2022/05/31 00:36:51 --: Iniciando tela do tokem...
+2022/05/31 00:36:51 --: Emitindo token
+2022/05/31 00:36:51 --: Gerando código token
+2022/05/31 00:36:51 --: Token enviado
+2022/05/31 00:38:09 --: ===============Tela Principal===============
+2022/05/31 00:38:09 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:39:31 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:39:39 --: =============Envia Token=============
+2022/05/31 00:39:39 --: Iniciando tela do tokem...
+2022/05/31 00:39:39 --: Emitindo token
+2022/05/31 00:39:39 --: Gerando código token
+2022/05/31 00:39:39 --: Token enviado
+2022/05/31 00:39:50 --: ===============Tela Principal===============
+2022/05/31 00:39:50 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:47:36 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:47:44 --: =============Envia Token=============
+2022/05/31 00:47:44 --: Iniciando tela do tokem...
+2022/05/31 00:47:44 --: Emitindo token
+2022/05/31 00:47:44 --: Gerando código token
+2022/05/31 00:47:44 --: Token enviado
+2022/05/31 00:55:10 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:55:19 --: ===============Tela Principal===============
+2022/05/31 00:55:19 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:57:17 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:57:26 --: ===============Tela Principal===============
+2022/05/31 00:57:26 --: =====Buscasndo conexão com BD=====
+2022/05/31 00:57:26 --: Inserindo dados no BD...
+2022/05/31 01:01:02 --: =====Buscasndo conexão com BD=====
+2022/05/31 01:01:11 --: ===============Tela Principal===============
+2022/05/31 01:01:11 --: =====Buscasndo conexão com BD=====
+2022/05/31 01:01:11 --: Inserindo dados no BD...
+2022/05/31 01:02:38 --: =====Buscasndo conexão com BD=====
+2022/05/31 01:02:46 --: =============Envia Token=============
+2022/05/31 01:02:46 --: Iniciando tela do tokem...
+2022/05/31 01:02:46 --: Emitindo token
+2022/05/31 01:02:46 --: Gerando código token
+2022/05/31 01:02:46 --: Token enviado
+2022/05/31 01:03:00 --: ===============Tela Principal===============
+2022/05/31 01:03:00 --: =====Buscasndo conexão com BD=====
+2022/05/31 01:03:00 --: Inserindo dados no BD...
+2022/05/31 02:09:27 --: =====Buscasndo conexão com BD=====
+2022/05/31 02:09:36 --: =============Envia Token=============
+2022/05/31 02:09:36 --: Iniciando tela do tokem...
+2022/05/31 02:09:36 --: Emitindo token
+2022/05/31 02:09:36 --: Gerando código token
+2022/05/31 02:09:36 --: Token enviado
+2022/05/31 02:09:48 --: ===============Tela Principal===============
+2022/05/31 02:09:48 --: =====Buscasndo conexão com BD=====
+2022/05/31 02:09:48 --: Inserindo dados no BD...
+2022/05/31 15:05:29 --: =====Buscasndo conexão com BD=====
+2022/05/31 15:05:36 --: =============Envia Token=============
+2022/05/31 15:05:36 --: Iniciando tela do tokem...
+2022/05/31 15:05:36 --: Emitindo token
+2022/05/31 15:05:36 --: Gerando código token
+2022/05/31 15:05:36 --: Token enviado
+2022/05/31 15:09:22 --: =====Buscasndo conexão com BD=====
+2022/05/31 15:09:26 --: =============Envia Token=============
+2022/05/31 15:09:26 --: Iniciando tela do tokem...
+2022/05/31 15:09:26 --: Emitindo token
+2022/05/31 15:09:26 --: Gerando código token
+2022/05/31 15:09:26 --: Token enviado
+2022/05/31 15:09:40 --: ===============Tela Principal===============
+2022/05/31 15:09:40 --: =====Buscasndo conexão com BD=====
+2022/05/31 15:09:40 --: Inserindo dados no BD...
+2022/05/31 15:34:57 --: =====Buscasndo conexão com BD=====
+2022/05/31 15:35:02 --: =============Envia Token=============
+2022/05/31 15:35:02 --: Iniciando tela do tokem...
+2022/05/31 15:35:02 --: Emitindo token
+2022/05/31 15:35:02 --: Gerando código token
+2022/05/31 15:35:02 --: Token enviado
