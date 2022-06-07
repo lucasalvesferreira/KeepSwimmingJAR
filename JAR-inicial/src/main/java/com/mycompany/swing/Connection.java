@@ -52,9 +52,9 @@ public class Connection {
       // Conexão com banco MySQL Local
         datasource = new BasicDataSource();
         datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        datasource.setUrl("jdbc:mysql://172.17.0.2:3306/keep?autoReconnect=true&useSSL=false"); 
+        datasource.setUrl("jdbc:mysql://172.17.0.2:3306/KeepSwimming?autoReconnect=true&useSSL=false"); 
               datasource.setUsername("root");
-              datasource.setPassword("root");
+              datasource.setPassword("urubu100");
 
     }
     
