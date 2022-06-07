@@ -160,6 +160,37 @@ public class TelaPrincipalCli {
             }
 
         });
+        templatelocal.batchUpdate(inserirDadosProcessos, new BatchPreparedStatementSetter() {
+
+            @Override
+            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                Integer pid = processosFiltrados.get(i).getPid();
+                String nome = processosFiltrados.get(i).getNome();
+                Double usoCpu = processosFiltrados.get(i).getUsoCpu();
+                Double usoMemoria = processosFiltrados.get(i).getUsoMemoria();
+                Long bytesUtilizados = processosFiltrados.get(i).getBytesUtilizados();
+                Long memVirtualUtilizada = processosFiltrados.get(i).getMemoriaVirtualUtilizada();
+
+                System.out.println("Inserindo processo: " + pid + " " + nome + " CPU: " + usoCpu + " Memória: " + usoMemoria + " Datahora: " + dataHoraProcesso);
+
+                ps.setInt(1, idDaMaquina);
+                ps.setInt(2, pid);
+                ps.setString(3, nome);
+                ps.setDouble(4, usoCpu);
+                ps.setDouble(5, usoMemoria);
+                ps.setLong(6, bytesUtilizados);
+                ps.setLong(7, memVirtualUtilizada);
+                ps.setInt(8, totalProcessos);
+                ps.setInt(9, threads);
+                ps.setTimestamp(10, new Timestamp(dataHoraProcesso.getTime()));
+            }
+
+            @Override
+            public int getBatchSize() {
+                return processosFiltrados.size();
+            }
+
+        });
     }
 
     private void buscarDadosHardware(Integer idDaMaquina) {
@@ -188,6 +219,15 @@ public class TelaPrincipalCli {
                     + "(?,?,?,?,?,?,?);";
 
             template.update(inserirDadosHardware,
+                    idDaMaquina,
+                    nomeDisco,
+                    tamanhoDisco,
+                    modeloDisco,
+                    qtdDiscos,
+                    memoriaTotal,
+                    processadorNome);
+            
+            templatelocal.update(inserirDadosHardware,
                     idDaMaquina,
                     nomeDisco,
                     tamanhoDisco,
@@ -227,6 +267,8 @@ public class TelaPrincipalCli {
                 + "(?,?,?,?,?,?,?,?);";
 
         template.update(inserirHistorico, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
+                temperaturaAtual, memoriaEmUso, memoriaDisponível, processadorUso);
+        templatelocal.update(inserirHistorico, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
                 temperaturaAtual, memoriaEmUso, memoriaDisponível, processadorUso);
 
         System.out.println("Data " + data);
