@@ -162,7 +162,7 @@ public class TelaPrincipalCli {
         });
         
          String inserirDadosProcessoslocal = "Insert into Processos VALUES "
-                + "(null,?,?,?,?,?,?,?,?,?)";
+                + "(?,?,?,?,?,?,?,?,?,?)";
         templatelocal.batchUpdate(inserirDadosProcessoslocal, new BatchPreparedStatementSetter() {
 
             @Override
@@ -231,7 +231,7 @@ public class TelaPrincipalCli {
             
               //Para Mysql local
               String inserirDadosHardwareLcal = "Insert into ComponentesHardware VALUES" 
-                      + "(null,1,?,?,?,?,?,?);";
+                      + "(?,?,?,?,?,?,?,?);";
             templatelocal.update(inserirDadosHardwareLcal,
                     idDaMaquina,
                     nomeDisco,
