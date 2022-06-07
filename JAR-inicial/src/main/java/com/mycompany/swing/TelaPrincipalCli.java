@@ -27,6 +27,12 @@ public class TelaPrincipalCli {
 
     //conexão com o banco
     private JdbcTemplate template;
+    
+    // classe  de conexão com o banco
+    private Connection connectionlocal;
+
+    //conexão com o banco
+    private JdbcTemplate templatelocal;
 
     // looca
     private com.github.britooo.looca.api.core.Looca looca;
@@ -35,7 +41,9 @@ public class TelaPrincipalCli {
 
         this.funcionario = func;
         this.connection = new Connection();
+        this.connectionlocal = new Connection(true);
         this.template = new JdbcTemplate(connection.getDatasource());
+        this.templatelocal = new JdbcTemplate(connectionlocal.getDatasource());
         this.looca = new com.github.britooo.looca.api.core.Looca();
 
         inicializacao();
