@@ -19,20 +19,19 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TelaPrincipalCli {
 
-    private Integer idFunc;
     private Funcionario funcionario;
 
-    // classe  de conexão com o banco
+    // classe de de conexão com o banco
     private Connection connection;
+    
+    // conexão docker
+    private Connection conLocal;
+    
+    //template docker
+    private JdbcTemplate templateLocal;
 
     //conexão com o banco
     private JdbcTemplate template;
-    
-    // classe  de conexão com o banco
-    private Connection connectionlocal;
-
-    //conexão com o banco
-    private JdbcTemplate templatelocal;
 
     // looca
     private com.github.britooo.looca.api.core.Looca looca;
@@ -40,29 +39,24 @@ public class TelaPrincipalCli {
     public TelaPrincipalCli(Funcionario func) {
 
         this.funcionario = func;
+        
+        //conexão AZURE
         this.connection = new Connection();
-        this.connectionlocal = new Connection(true);
         this.template = new JdbcTemplate(connection.getDatasource());
-        this.templatelocal = new JdbcTemplate(connectionlocal.getDatasource());
+        
+        //conexão DOCKER
+        Boolean mysql = true;
+        this.conLocal = new Connection(mysql);
+        this.templateLocal = new JdbcTemplate(this.conLocal.getDatasource());
+        
         this.looca = new com.github.britooo.looca.api.core.Looca();
+
 
         inicializacao();
 
     }
 
     public TelaPrincipalCli() {
-    }
-
-    public Integer getIdFunc() {
-        return idFunc;
-    }
-
-    public void setIdFunc(Integer idFunc) {
-        this.idFunc = idFunc;
-    }
-
-    public TelaPrincipalCli(Integer idFunc) {
-        this.idFunc = idFunc;
     }
 
     public Funcionario getFuncionario() {
@@ -73,7 +67,7 @@ public class TelaPrincipalCli {
         this.funcionario = funcionario;
     }
 
-    public void inicializacao() {
+ private void inicializacao() {
         Timer timer = new Timer();
         Integer delay = 1000;
         Integer interval = 5000;
@@ -96,7 +90,6 @@ public class TelaPrincipalCli {
     }
 
     private Integer buscarIdDaMaquina() {
-
         /////////////////////  Pegando o id da Maquina    ///////////////////////
         List<maquina> idMaquina = template.query("select idMaquina from [dbo].[Maquina] \n"
                 + "JOIN [dbo].[FUNCIONARIO] on fkUsuario = idFuncionario \n"
@@ -125,11 +118,21 @@ public class TelaPrincipalCli {
 
         Integer totalProcessos = looca.getGrupoDeProcessos().getTotalProcessos();
         Integer threads = looca.getGrupoDeProcessos().getTotalThreads();
-
+        
+        System.out.println("Inserindo no docker");
+        
+        //Insert Mysql
+        String inserirDadosProcessosLocal = "Insert into Processos VALUES "
+              + "(null,?,?,?,?,?,?,?,?,?,?);";
+        
+        System.out.println("Inserindo na AZURE");
+        
+        //Insert AZURE
         String inserirDadosProcessos = "Insert into Processos VALUES "
                 + "(?,?,?,?,?,?,?,?,?,?)";
-
-        template.batchUpdate(inserirDadosProcessos, new BatchPreparedStatementSetter() {
+        
+        //INSERT LOCAL(DOCKER)
+        templateLocal.batchUpdate(inserirDadosProcessosLocal, new BatchPreparedStatementSetter() {
 
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
@@ -139,9 +142,11 @@ public class TelaPrincipalCli {
                 Double usoMemoria = processosFiltrados.get(i).getUsoMemoria();
                 Long bytesUtilizados = processosFiltrados.get(i).getBytesUtilizados();
                 Long memVirtualUtilizada = processosFiltrados.get(i).getMemoriaVirtualUtilizada();
-
-                System.out.println("Inserindo processo: " + pid + " " + nome + " CPU: " + usoCpu + " Memória: " + usoMemoria + " Datahora: " + dataHoraProcesso);
-
+                
+                System.out.println("Inserindo processo local: " + dataHoraProcesso);
+                
+        
+                
                 ps.setInt(1, idDaMaquina);
                 ps.setInt(2, pid);
                 ps.setString(3, nome);
@@ -160,10 +165,9 @@ public class TelaPrincipalCli {
             }
 
         });
-        
-         String inserirDadosProcessoslocal = "Insert into Processos VALUES "
-                + "(?,?,?,?,?,?,?,?,?,?)";
-        templatelocal.batchUpdate(inserirDadosProcessoslocal, new BatchPreparedStatementSetter() {
+
+        // INSERT AZURE
+        template.batchUpdate(inserirDadosProcessos, new BatchPreparedStatementSetter() {
 
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
@@ -173,9 +177,9 @@ public class TelaPrincipalCli {
                 Double usoMemoria = processosFiltrados.get(i).getUsoMemoria();
                 Long bytesUtilizados = processosFiltrados.get(i).getBytesUtilizados();
                 Long memVirtualUtilizada = processosFiltrados.get(i).getMemoriaVirtualUtilizada();
-
-                System.out.println("Inserindo processo: " + pid + " " + nome + " CPU: " + usoCpu + " Memória: " + usoMemoria + " Datahora: " + dataHoraProcesso);
-
+                
+                System.out.println("Inserindo processo: " + pid + " " + nome + " CPU: " + usoCpu + " Memória: " + usoMemoria + " Datahora: " + dataHoraProcesso);               
+                
                 ps.setInt(1, idDaMaquina);
                 ps.setInt(2, pid);
                 ps.setString(3, nome);
@@ -214,25 +218,27 @@ public class TelaPrincipalCli {
             Long memoriaTotal = memoria.getTotal();
             String processadorNome = processador.getNome();
 
-          
+            System.out.println("Inserindo no docker");
+            
+                 //Para Mysql local
+        String inserirDadosHardwareLocal = "Insert into ComponentesHardware VALUES" 
+                  + "(null,?,?,?,?,?,?,?);";
+        templateLocal.update(inserirDadosHardwareLocal,
+                            idDaMaquina,
+                            nomeDisco,
+                            tamanhoDisco,
+                            modeloDisco,
+                            qtdDiscos, 
+                            memoriaTotal,
+                            processadorNome);
+        
+            System.out.println("Inserindo na AZURE");
+        
             //Para AZURE
             String inserirDadosHardware = "Insert into ComponentesHardware VALUES"
                     + "(?,?,?,?,?,?,?);";
 
             template.update(inserirDadosHardware,
-                    idDaMaquina,
-                    nomeDisco,
-                    tamanhoDisco,
-                    modeloDisco,
-                    qtdDiscos,
-                    memoriaTotal,
-                    processadorNome);
-            
-            
-              //Para Mysql local
-              String inserirDadosHardwareLcal = "Insert into ComponentesHardware VALUES" 
-                      + "(?,?,?,?,?,?,?,?);";
-            templatelocal.update(inserirDadosHardwareLcal,
                     idDaMaquina,
                     nomeDisco,
                     tamanhoDisco,
@@ -247,14 +253,15 @@ public class TelaPrincipalCli {
         System.out.println("Buscando histórico...");
 
         Date data = new Date();
-        DiscosGroup disco = looca.getGrupoDeDiscos();
+         DiscosGroup disco = looca.getGrupoDeDiscos();
         List<Disco> listaDeDisco = disco.getDiscos();
-
-        for (Integer i = 0; i < listaDeDisco.size(); i++) {
-            System.out.println("BYTES DE LEITURA: " + listaDeDisco.get(i).getBytesDeLeitura());
+        
+        for(Integer i = 0; i < listaDeDisco.size(); i++)
+        {
+            System.out.println("BYTES DE LEITURA: " +  listaDeDisco.get(i).getBytesDeLeitura());
         }
+        
 
-       
         Memoria memoria = looca.getMemoria();
         Processador processador = looca.getProcessador();
 
@@ -264,19 +271,22 @@ public class TelaPrincipalCli {
         Long memoriaEmUso = memoria.getEmUso();
         Long memoriaDisponível = memoria.getDisponivel();
         Double processadorUso = processador.getUso();
+        
+        System.out.println("Inserindo no docker");
+        
+         //MySQL local         
+            String inserirHistoricoLocal = "Insert into Historico VALUES "
+                + "(null,?,?,?,?,?,?,?,?);";
+        templateLocal.update(inserirHistoricoLocal,idDaMaquina,data,tempoInicializado,tempoDeAtividade,
+               temperaturaAtual,memoriaEmUso,memoriaDisponível,processadorUso);
+        
+        System.out.println("inserindo na AZURE");
 
         //AZURE
         String inserirHistorico = "Insert into Historico VALUES "
-                + "(?,?,?,?,?,?,?,?);";
+                + "(?,getdate(),?,?,?,?,?,?);";
 
-        template.update(inserirHistorico, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
-                temperaturaAtual, memoriaEmUso, memoriaDisponível, processadorUso);
-        
-        
-         //MySQL local         
-        String inserirHistoricolocal = "Insert into Historico VALUES "
-           + "(null,1,?,?,?,?,?,?,?);";
-        templatelocal.update(inserirHistoricolocal, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
+        template.update(inserirHistorico, idDaMaquina, tempoInicializado, tempoDeAtividade,
                 temperaturaAtual, memoriaEmUso, memoriaDisponível, processadorUso);
 
         System.out.println("Data " + data);
@@ -286,7 +296,9 @@ public class TelaPrincipalCli {
         System.out.println("Memoria em uso " + memoriaEmUso);
         System.out.println("Memoria disponível " + memoriaDisponível);
         System.out.println("Uso do processador " + processadorUso);
-
+        
+       
+        
     }
-
+    
 }
