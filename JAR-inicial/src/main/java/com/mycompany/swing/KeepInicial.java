@@ -17,10 +17,10 @@ public class KeepInicial {
         String SENHA = leitorTxt.nextLine();
 
         valida val = new valida();
-        Boolean validou = val.validandoSessao(EMAIL, SENHA);
+        Funcionario validou = val.validandoSessao(EMAIL, SENHA);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        if (validou == true) {
+        if (validou != null) {
 
             System.out.println("\n\n=============Envia Token===============\n");
             System.out.println("\nGerando Token\n...");
@@ -31,23 +31,16 @@ public class KeepInicial {
             System.out.println("\nDigite o codigo enviado abaixo!\n");
             String guardaCodDigitado = leitorTxt.nextLine();
 
-            if ("".equals(guardaCodDigitado)) {
-                System.out.println("Digite um token valido para continuar!!");
-                guardaCodDigitado = leitorTxt.nextLine();
-            } else if (guardaCodDigitado.equalsIgnoreCase(envia.getGuardaCodig())) {
-//           new TelaUsuarioLogado().setVisible(true);
-//             new TelaPrincipal(funcionario).setVisible(true);
+            if (guardaCodDigitado.equals(envia.getGuardaCodig())) {
 
-                System.out.println(envia.getFuncionario());
-                TelaPrincipalCli telaPrinc = new TelaPrincipalCli();
-                telaPrinc.inicializacao();
-//             log.criarLog("Login realizado com sucesso");
+                TelaPrincipalCli telaPrinc = new TelaPrincipalCli(validou);
+
+                
+
             } else {
+                System.out.println("Digite um token valido para continuar!!");
 
             }
-
-            System.out.println("Digite um token valido para continuar!!");
-            guardaCodDigitado = leitorTxt.nextLine();
 
         }
 
