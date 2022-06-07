@@ -8,25 +8,20 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-
 class Log {
+
     private DateTimeFormatter dateTimeLog = DateTimeFormatter.ofPattern("[yyyy/MM/dd HH:mm:ss]");
     // Momento para por no nome do arquivo
     private DateTimeFormatter dateTimeName = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private String momentoLog = dateTimeLog.format(LocalDateTime.now());
     private String momentoNomeLog = dateTimeName.format(LocalDateTime.now());
     private String nomeLog = String.format("src/main/resources/%s_KS.txt", momentoNomeLog);
-    
 
-    public void criarLog(String message){
+    public void criarLog(String message) {
         try (
-            FileWriter criarArquivo = new FileWriter(nomeLog, true);
-            BufferedWriter buffer = new BufferedWriter(criarArquivo);
-            PrintWriter gravarArq = new PrintWriter(buffer)
-            ){
+                 FileWriter criarArquivo = new FileWriter(nomeLog, true);  BufferedWriter buffer = new BufferedWriter(criarArquivo);  PrintWriter gravarArq = new PrintWriter(buffer)) {
             gravarArq.append(String.format("%s --: %s\n", momentoLog, message));
         } catch (IOException e) {
-            System.out.println("caiu aqui luqueta\n" + e);
         }
     }
 }

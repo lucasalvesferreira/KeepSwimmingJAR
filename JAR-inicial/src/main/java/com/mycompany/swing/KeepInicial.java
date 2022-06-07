@@ -8,7 +8,7 @@ public class KeepInicial {
 
         Scanner leitorTxt = new Scanner(System.in);
         ///////////////////////////////////////////////
-        System.out.println("\n\n===============Tela de Login===============\n\n");
+        System.out.println("\n\n======================Tela de Login======================\n\n");
         System.out.println("Insira seu login para continuar!!\n\n");
 
         System.out.println("Nome de Usuario:\n");
@@ -22,7 +22,7 @@ public class KeepInicial {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if (validou != null) {
 
-            System.out.println("\n\n=============Envia Token===============\n");
+            System.out.println("\n\n======================KeepBoot======================\n");
             System.out.println("\nGerando Token\n...");
 
             EnviaTokenCli envia = new EnviaTokenCli();
@@ -31,14 +31,19 @@ public class KeepInicial {
             System.out.println("\nDigite o codigo enviado abaixo!\n");
             String guardaCodDigitado = leitorTxt.nextLine();
 
-            if (guardaCodDigitado.equals(envia.getGuardaCodig())) {
+            Boolean stop = false;
 
-                TelaPrincipalCli telaPrinc = new TelaPrincipalCli(validou);
+            while (stop != true) {
 
-                
+                if (guardaCodDigitado.equals(envia.getGuardaCodig())) {
+                    stop = true;
+                    TelaPrincipalCli telaPrinc = new TelaPrincipalCli(validou);
 
-            } else {
-                System.out.println("Digite um token valido para continuar!!");
+                } else {
+                    System.out.println("Digite um token valido para continuar!!");
+                    guardaCodDigitado = leitorTxt.nextLine();
+
+                }
 
             }
 

@@ -1,0 +1,58 @@
+2022/06/07 00:04:47 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:04:56 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:04:58 --: =============Envia Token=============
+2022/06/07 00:04:58 --: Iniciando tela do token...
+2022/06/07 00:04:58 --: Emitindo token
+2022/06/07 00:04:58 --: Gerando código token
+2022/06/07 00:04:58 --: Token enviado
+2022/06/07 00:06:42 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:06:50 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:06:52 --: =============Envia Token=============
+2022/06/07 00:06:52 --: Iniciando tela do token...
+2022/06/07 00:06:52 --: Emitindo token
+2022/06/07 00:06:52 --: Gerando código token
+2022/06/07 00:08:43 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:08:51 --: =============Envia Token=============
+2022/06/07 00:08:51 --: Iniciando tela do token...
+2022/06/07 00:08:51 --: Emitindo token
+2022/06/07 00:08:51 --: Gerando código token
+2022/06/07 00:08:51 --: Token enviado
+2022/06/07 00:10:33 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:10:41 --: =============Envia Token=============
+2022/06/07 00:10:41 --: Iniciando tela do token...
+2022/06/07 00:10:41 --: Emitindo token
+2022/06/07 00:10:41 --: Gerando código token
+2022/06/07 00:10:41 --: Token enviado
+2022/06/07 00:11:38 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:11:46 --: =============Envia Token=============
+2022/06/07 00:11:46 --: Iniciando tela do token...
+2022/06/07 00:11:46 --: Emitindo token
+2022/06/07 00:11:46 --: Gerando código token
+2022/06/07 00:11:46 --: Token enviado
+2022/06/07 00:13:10 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:13:18 --: =============Envia Token=============
+2022/06/07 00:13:18 --: Iniciando tela do token...
+2022/06/07 00:13:18 --: Emitindo token
+2022/06/07 00:13:18 --: Gerando código token
+2022/06/07 00:13:18 --: Token enviado
+2022/06/07 00:15:07 --: =====Buscasndo conexão com BD=====
+2022/06/07 00:15:14 --: =============Envia Token=============
+2022/06/07 00:15:14 --: Iniciando tela do token...
+2022/06/07 00:15:14 --: Emitindo token
+2022/06/07 00:15:14 --: Gerando código token
+2022/06/07 00:15:14 --: Token enviado
+2022/06/07 00:15:48 --: =====Buscasndo conexão com BD=====
+2022/06/07 01:03:53 --: =====Buscasndo conexão com BD=====
+2022/06/07 01:04:02 --: =============Envia Token=============
+2022/06/07 01:04:02 --: Iniciando tela do token...
+2022/06/07 01:04:02 --: Emitindo token
+2022/06/07 01:04:02 --: Gerando código token
+2022/06/07 01:04:02 --: Token enviado
+2022/06/07 01:04:14 --: =====Buscasndo conexão com BD=====
+2022/06/07 01:06:02 --: =====Buscasndo conexão com BD=====
+2022/06/07 01:06:10 --: =============Envia Token=============
+2022/06/07 01:06:10 --: Iniciando tela do token...
+2022/06/07 01:06:10 --: Emitindo token
+2022/06/07 01:06:10 --: Gerando código token
+2022/06/07 01:06:10 --: Token enviado
+2022/06/07 01:06:21 --: =====Buscasndo conexão com BD=====

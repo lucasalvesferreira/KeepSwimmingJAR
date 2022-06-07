@@ -18,9 +18,9 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class TelaPrincipalCli {
-    
-     private Integer idFunc;
-     private Funcionario funcionario;
+
+    private Integer idFunc;
+    private Funcionario funcionario;
 
     // classe  de conexão com o banco
     private Connection connection;
@@ -31,21 +31,19 @@ public class TelaPrincipalCli {
     // looca
     private com.github.britooo.looca.api.core.Looca looca;
 
-        public TelaPrincipalCli(Funcionario func) {
-            
+    public TelaPrincipalCli(Funcionario func) {
+
         this.funcionario = func;
         this.connection = new Connection();
         this.template = new JdbcTemplate(connection.getDatasource());
         this.looca = new com.github.britooo.looca.api.core.Looca();
 
-     inicializacao();
-       
+        inicializacao();
+
     }
 
     public TelaPrincipalCli() {
     }
-        
-        
 
     public Integer getIdFunc() {
         return idFunc;
@@ -59,7 +57,6 @@ public class TelaPrincipalCli {
         this.idFunc = idFunc;
     }
 
-
     public Funcionario getFuncionario() {
         return funcionario;
     }
@@ -67,7 +64,7 @@ public class TelaPrincipalCli {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-    
+
     public void inicializacao() {
         Timer timer = new Timer();
         Integer delay = 1000;
@@ -91,8 +88,7 @@ public class TelaPrincipalCli {
     }
 
     private Integer buscarIdDaMaquina() {
-        
-        System.out.println(idFunc);
+
         /////////////////////  Pegando o id da Maquina    ///////////////////////
         List<maquina> idMaquina = template.query("select idMaquina from [dbo].[Maquina] \n"
                 + "JOIN [dbo].[FUNCIONARIO] on fkUsuario = idFuncionario \n"
@@ -135,9 +131,9 @@ public class TelaPrincipalCli {
                 Double usoMemoria = processosFiltrados.get(i).getUsoMemoria();
                 Long bytesUtilizados = processosFiltrados.get(i).getBytesUtilizados();
                 Long memVirtualUtilizada = processosFiltrados.get(i).getMemoriaVirtualUtilizada();
-                
+
                 System.out.println("Inserindo processo: " + pid + " " + nome + " CPU: " + usoCpu + " Memória: " + usoMemoria + " Datahora: " + dataHoraProcesso);
-                
+
                 ps.setInt(1, idDaMaquina);
                 ps.setInt(2, pid);
                 ps.setString(3, nome);
@@ -198,18 +194,16 @@ public class TelaPrincipalCli {
         System.out.println("Buscando histórico...");
 
         Date data = new Date();
-         DiscosGroup disco = looca.getGrupoDeDiscos();
+        DiscosGroup disco = looca.getGrupoDeDiscos();
         List<Disco> listaDeDisco = disco.getDiscos();
-        
-        for(Integer i = 0; i < listaDeDisco.size(); i++)
-        {
-            System.out.println("BYTES DE LEITURA: " +  listaDeDisco.get(i).getBytesDeLeitura());
+
+        for (Integer i = 0; i < listaDeDisco.size(); i++) {
+            System.out.println("BYTES DE LEITURA: " + listaDeDisco.get(i).getBytesDeLeitura());
         }
-        
+
         //MySQL local         
         //String inserirHistorico = "Insert into Historico VALUES "
         //   + "(null,1,?,?,?,?,?,?,?);";
-
         Memoria memoria = looca.getMemoria();
         Processador processador = looca.getProcessador();
 
@@ -234,10 +228,7 @@ public class TelaPrincipalCli {
         System.out.println("Memoria em uso " + memoriaEmUso);
         System.out.println("Memoria disponível " + memoriaDisponível);
         System.out.println("Uso do processador " + processadorUso);
-        
-       
-        
+
     }
-    
-    
+
 }

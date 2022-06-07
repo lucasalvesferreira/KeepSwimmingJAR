@@ -16,13 +16,11 @@ public class valida {
 
     private String EMAIL;
     private String SENHA;
- 
 
     public Funcionario validandoSessao(String EMAIL, String SENHA) {
 
         this.EMAIL = EMAIL;
         this.SENHA = SENHA;
-
 
         if (this.EMAIL.equalsIgnoreCase(null) || this.SENHA.equalsIgnoreCase(null)) {
             System.out.println("Login Invalido!!");
@@ -59,9 +57,6 @@ public class valida {
                 System.out.println("\n=======================================================\n");
                 System.out.println("\n\nInciando bot...\n");
 
-                System.out.println(func.getIdFuncionario());
-                TelaPrincipalCli telaPrinc = new TelaPrincipalCli(func);
-                
                 return func;
 
             } else {
@@ -74,5 +69,5 @@ public class valida {
         return null;
 
     }
- 
+
 }
