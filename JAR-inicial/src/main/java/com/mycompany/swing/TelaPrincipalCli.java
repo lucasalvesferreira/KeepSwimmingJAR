@@ -160,7 +160,10 @@ public class TelaPrincipalCli {
             }
 
         });
-        templatelocal.batchUpdate(inserirDadosProcessos, new BatchPreparedStatementSetter() {
+        
+         String inserirDadosProcessoslocal = "Insert into Processos VALUES "
+                + "(null,?,?,?,?,?,?,?,?,?)";
+        templatelocal.batchUpdate(inserirDadosProcessoslocal, new BatchPreparedStatementSetter() {
 
             @Override
             public void setValues(PreparedStatement ps, int i) throws SQLException {
@@ -211,9 +214,7 @@ public class TelaPrincipalCli {
             Long memoriaTotal = memoria.getTotal();
             String processadorNome = processador.getNome();
 
-            //Para Mysql local
-            //  String inserirDadosHardware = "Insert into ComponentesHardware VALUES" 
-            //          + "(null,1,?,?,?,?,?,?);";
+          
             //Para AZURE
             String inserirDadosHardware = "Insert into ComponentesHardware VALUES"
                     + "(?,?,?,?,?,?,?);";
@@ -227,7 +228,11 @@ public class TelaPrincipalCli {
                     memoriaTotal,
                     processadorNome);
             
-            templatelocal.update(inserirDadosHardware,
+            
+              //Para Mysql local
+              String inserirDadosHardwareLcal = "Insert into ComponentesHardware VALUES" 
+                      + "(null,1,?,?,?,?,?,?);";
+            templatelocal.update(inserirDadosHardwareLcal,
                     idDaMaquina,
                     nomeDisco,
                     tamanhoDisco,
@@ -249,9 +254,7 @@ public class TelaPrincipalCli {
             System.out.println("BYTES DE LEITURA: " + listaDeDisco.get(i).getBytesDeLeitura());
         }
 
-        //MySQL local         
-        //String inserirHistorico = "Insert into Historico VALUES "
-        //   + "(null,1,?,?,?,?,?,?,?);";
+       
         Memoria memoria = looca.getMemoria();
         Processador processador = looca.getProcessador();
 
@@ -268,7 +271,12 @@ public class TelaPrincipalCli {
 
         template.update(inserirHistorico, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
                 temperaturaAtual, memoriaEmUso, memoriaDisponível, processadorUso);
-        templatelocal.update(inserirHistorico, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
+        
+        
+         //MySQL local         
+        String inserirHistoricolocal = "Insert into Historico VALUES "
+           + "(null,1,?,?,?,?,?,?,?);";
+        templatelocal.update(inserirHistoricolocal, idDaMaquina, data, tempoInicializado, tempoDeAtividade,
                 temperaturaAtual, memoriaEmUso, memoriaDisponível, processadorUso);
 
         System.out.println("Data " + data);
